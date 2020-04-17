@@ -15,6 +15,7 @@ public class ExCast {
 		 * float -> double
 		 * byte -> short(char) -> int -> long
 		 */
+		System.out.printf("%d, %f, %f", num, dnum, fnum);
 	}
 
 }
