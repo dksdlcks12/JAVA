@@ -13,7 +13,7 @@ public class ForEx2 {
 		getnum.close();
 		if(num!=0 && num!=1) {
 			for(int i=2; i<=num; i++) {
-				if(i==num) {
+				if(num==i) {
 					System.out.printf("%d는 소수 입니다.", num);
 					break;
 				}
