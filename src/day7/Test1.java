@@ -44,6 +44,8 @@ public class Test1 {
 		int arr[] = new int [leng];
 		randsetArr(arr, min, max);
 		prtArr(arr);
+		getnum.close();
+		System.exit(0);
 	}
 
 }
