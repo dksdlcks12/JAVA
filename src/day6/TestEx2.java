@@ -24,11 +24,10 @@ public class TestEx2 {
 				System.out.printf("%4d점 F\n", score);
 			}else {
 				System.out.printf("%4d가 음수라서 종료합니다.", score);
+				getnum.close();
 				break;
 			}
 		}
-		
-		getnum.close();
 		System.exit(0);
 	}
 
