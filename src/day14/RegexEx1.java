@@ -1,51 +1,31 @@
-package day13;
+package day14;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class test3 {
+public class RegexEx1 {
 
 	public static void main(String[] args) {
 		Scanner get = new Scanner(System.in);
-		String str = get.nextLine();
-		if(str.contains("java")) {
-			System.out.println("java라는 단어가 있습니다.");
-		}else {
-			System.out.println("java라는 단어가 없습니다.");
-		}
-		if(str.contains("Java")) {
-			System.out.println("Java라는 단어가 있습니다.");
-		}else {
-			System.out.println("Java라는 단어가 없습니다.");
-		}
+		String str = null;
 		boolean chk = false;
-		int gender='0';
+		char gender='0';
 		System.out.print("주민번호를 입력하십시오. : ");
 		while(chk==false) {
 			chk = true;
 			str = get.nextLine();
-			str = str.replaceAll(" ", "");
-			if(isValid(str)==true) {
-				for(int i=0; i<str.length(); i++) {
-					if(str.length()==13) {
-						if(str.charAt(i)<48 || 57<str.charAt(i)) {
-							chk = false;
-						}
-						gender = str.charAt(6);
-					}else if(str.length()==14) {
-						if(i!=6 && (str.charAt(i)<48 || 57<str.charAt(i))) {
-							chk = false;
-						}
-						gender = str.charAt(7);
-					}else {
-						chk = false;
-					}
-				}
-			}else {
+			Pattern p = Pattern.compile("(\\d{6}-\\d{7})|(\\d{13})");
+			Matcher m = p.matcher(str);
+			if(!m.matches()||!isValid(str)){
+				System.out.print("올바른 주민번호를 입력하십시오. : ");
 				chk = false;
 			}
-			if(chk==false) {
-				System.out.print("주민번호형식이 아닙니다 다시 입력하여 주십시오 : ");
-			}
+		}
+		if(str.contains("-")) {
+			gender = str.charAt(7);
+		}else {
+			gender = str.charAt(6);
 		}
 		if(gender%2==1) {
 			System.out.println("남성입니다.");
@@ -89,4 +69,5 @@ public class test3 {
 		}
 		return true;
 	}
+
 }
