@@ -1,4 +1,4 @@
-package day15;
+package day16;
 
 import java.util.*;
 
@@ -29,24 +29,18 @@ public class Test3 {
 		}
 	}
 	public static void game(List<Integer> com, List<Integer> player) {
-		int st = 0, ball = 0, cont = 0;
 		while(true) {
-			st = 0;
-			ball = 0;
-			cont = 0;
+			int st = 0, ball = 0, cont = 0;
 			player = new ArrayList<Integer>();
 			getPlayer(player);
 			while(cont<com.size()) {
-				for(int i=0; i<com.size(); i++) {
-					if(player.get(cont).equals(com.get(i))) {
-						if(player.get(cont).equals(com.get(cont))) {
-							st++;
-						}else {
-							ball++;
-						}
+				if(player.contains(com.get(cont))) {
+					if(player.get(cont).equals(com.get(cont))) {
+						st++;
+					}else {
+						ball++;
 					}
 				}
-				System.out.println(cont+" "+st+" "+ball);
 				cont++;
 			}
 			System.out.printf("%2d 스트라이크, %2d 볼, %2d 아웃\n", st, ball, 3-st-ball);
