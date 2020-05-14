@@ -12,9 +12,9 @@ public class Test2 {
 
 		HashSet<Integer> winnum = new HashSet<Integer>();
 		HashSet<Integer> auto = new HashSet<Integer>();
-		int min = 1, max = 45, bonus = 0;
+		int min = 1, max = 45, bonus = min-1;
 		setlotto(winnum, min, max);
-		while(bonus==0 || winnum.contains(bonus)) {
+		while(bonus<min || winnum.contains(bonus)) {
 			bonus = randnum(min, max);
 		}
 		setlotto(auto, min, max);
@@ -35,7 +35,7 @@ public class Test2 {
 		}
 	}
 	public static int randnum(int min, int max) {
-		return new Random().nextInt(max-min)+min;
+		return new Random().nextInt(max-min+1)+min;
 	}
 	public static String comp(HashSet<Integer> winnum, int bonus, HashSet<Integer> auto) {
 		int cont=0;
