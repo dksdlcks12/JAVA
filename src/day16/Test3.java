@@ -6,10 +6,11 @@ public class Test3 {
 	static Scanner get = new Scanner(System.in);
 	public static void main(String[] args) {
 		List<Integer> com = new ArrayList<Integer>();
-		List<Integer> player = null;
+		List<Integer> player = new ArrayList<Integer>();
 		randSet(com);
 		System.out.println(com);
 		game(com, player);
+		get.close();
 	}
 	public static void randSet(List<Integer> com) {
 		int min = 1, max = 10;
@@ -22,16 +23,14 @@ public class Test3 {
 	}
 	public static void getPlayer(List<Integer> player) { 
 		System.out.print("정수 3개를 입력하십시오. : ");
-		int num = 0;
-		while(num<3) {
+		while(player.size()<3) {
 			player.add(get.nextInt());
-			num++;
 		}
 	}
 	public static void game(List<Integer> com, List<Integer> player) {
 		while(true) {
 			int st = 0, ball = 0, cont = 0;
-			player = new ArrayList<Integer>();
+			player.clear();
 			getPlayer(player);
 			while(cont<com.size()) {
 				if(player.contains(com.get(cont))) {
@@ -43,9 +42,9 @@ public class Test3 {
 				}
 				cont++;
 			}
-			System.out.printf("%2d 스트라이크, %2d 볼, %2d 아웃\n", st, ball, 3-st-ball);
+			System.out.printf("%2d 스트라이크,%2d 볼,%2d 아웃\n", st, ball, 3-st-ball);
 			if(st==3) {
-				break;
+				return;
 			}
 		}
 	}
